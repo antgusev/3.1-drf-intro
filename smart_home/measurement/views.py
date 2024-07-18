@@ -18,7 +18,7 @@ from measurement.serializers import MeasurementSerializer, SensorDetailSerialize
 #         ser = SensorDetailSerializer(sensor)
 #         return Response(ser.data)
 
-class SensorView(generics.ListCreateAPIView):
+class SensorCreateAPIView(generics.ListCreateAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorDetailSerializer
 
@@ -30,6 +30,6 @@ class SensorView(generics.ListCreateAPIView):
         return self.create(request, new_sensor)
 
 
-class MeasurementsCreateAPIView(generics.CreateAPIView):
+class MeasurementsCreateAPIView(generics.ListCreateAPIView):
     queryset = Measurement.objects.all()
     serializer_class = MeasurementSerializer

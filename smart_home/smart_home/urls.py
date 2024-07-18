@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 
-from measurement.views import SensorView
+# from measurement.views import SensorCreateAPIView
 
 
 urlpatterns = [
