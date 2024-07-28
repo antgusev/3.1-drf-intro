@@ -10,7 +10,7 @@ from rest_framework import generics
 
 
 from measurement.models import Measurement, Sensor
-from measurement.serializers import MeasurementSerializer, SensorDetailSerializer
+from measurement.serializers import MeasurementSerializer, SensorDetailSerializer, SensorSerializer
 
 # class SensorView(generics.ListCreateAPIView):
 #     def get(self, request, pk):
@@ -18,18 +18,23 @@ from measurement.serializers import MeasurementSerializer, SensorDetailSerialize
 #         ser = SensorDetailSerializer(sensor)
 #         return Response(ser.data)
 
-class SensorCreateAPIView(generics.ListCreateAPIView):
+class SensorListCreateAPIView(generics.ListCreateAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorDetailSerializer
 
-    def post(self, request, *args, **kwargs):
-        new_sensor = Sensor.objects.create(
-            name=request.data['name'],
-            description=request.data['description']
-        )
-        return self.create(request, new_sensor)
+    # def post(self, request, *args, **kwargs):
+    #     new_sensor = Sensor.objects.create(
+    #         name=request.data['name'],
+    #         description=request.data['description']
+    #     )
+    #     return self.create(request, new_sensor)
 
 
-class MeasurementsCreateAPIView(generics.ListCreateAPIView):
+class SensorRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
+    queryset = Sensor.objects.all()
+    serializer_class = SensorSerializer
+
+
+class MeasurementsCreateAPIView(generics.CreateAPIView):
     queryset = Measurement.objects.all()
     serializer_class = MeasurementSerializer
