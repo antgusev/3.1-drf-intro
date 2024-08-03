@@ -35,6 +35,6 @@ class SensorRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
     serializer_class = SensorSerializer
 
 
-class MeasurementsCreateAPIView(generics.CreateAPIView):
+class MeasurementCreateAPIView(generics.CreateAPIView):
     queryset = Measurement.objects.all()
     serializer_class = MeasurementSerializer

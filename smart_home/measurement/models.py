@@ -10,9 +10,9 @@ class Sensor(models.Model):
 
 
 class Measurement(models.Model):
-    temperature = models.ImageField()
+    temperature = models.FloatField()
     created_at = models.DateTimeField('created_at', auto_now_add=True)
     updated_at = models.DateTimeField('updated_at', auto_now=True)
-    sensors = models.ForeignKey(Sensor, on_delete=models.CASCADE)
+    sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE, related_name='measurements')
 
 
